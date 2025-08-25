@@ -1,3 +1,1 @@
-This is to visualize the change in cosine of a state's description
-
-We describe the state of something and then we plot the cosine difference from one state to another
+This is to visualize the change in cosine similarity between the description of states, as they progress

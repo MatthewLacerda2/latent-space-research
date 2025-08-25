@@ -39,21 +39,23 @@ class EmbeddingDerivative:
     async def generate_description(self, step: int, total_steps: int) -> str:
         """Generate a description for a specific step in the transition."""
         try:
-            prompt = f"""You are a writing assistant. You will be given the descriptions of something in its beginning and end states. Your job is to write a description for a specific step in the transition.
+            prompt = f"""You are a writing assistant. You will be given a beginning state and end state.
+            Your job is to write a description for a single intermediate state.
 
 
 This is the beginning: {self.beginning_stage}
 This is the end: {self.end_stage}
 
 
-Write a description of how the state would be {step}/{total_steps} in-between the beginning and the end.
-This should be a natural progression from the beginning to the end.
+Write the description for the state {step} out of{total_steps}.
 
+The description must:
+- Describe only the current state.
+- Describe the state *as it is in this exact moment*
+- Avoid comparative language.
+- NOT write about progression.
+- NOT write any notes or follow-up questions.
 
-Simply write the description.
-Do NOT write any commentary, thoughts, notes, suggestions.
-Do NOT write any follow-up questions.
-You must NOT write about anything other than the current state. Do not write comparisons between states, only write about the current state.
 Limit your response to 1000 characters.
 """
             
