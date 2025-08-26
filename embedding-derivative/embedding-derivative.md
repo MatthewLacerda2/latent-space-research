@@ -17,4 +17,10 @@ End: a sunny day with clear skies, slight breeze, tropical climate, heartwarming
 
 The similarity between the N-th state and the end state grew as the states progressed
 
+The derivation in the similarity change between consecutive states was mostly flat
+Higher derivation between consecutive states correlated with higher derivation between those states and the end state
+
 Output quality: better prompt and model yield better outputs more aligned with what we expected from progression states
+
+# Example output:
+
