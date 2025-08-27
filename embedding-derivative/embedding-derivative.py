@@ -16,7 +16,6 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from utils import get_embedding, cosine_similarity
-from gemini import get_gemini_output
 import time
 
 class StateDescription(BaseModel):
@@ -59,14 +58,9 @@ The description must:
 Limit your response to 1000 characters.
 """
             
-            # Check if model starts with 'gemini' and use appropriate client
-            if self.model.lower().startswith('gemini'):
-                response = get_gemini_output(prompt)
-                return response.strip()
-            else:
-                response = await self.client.generate(model=self.model, prompt=prompt)
-                time.sleep(10)
-                return response['response'].strip()
+            response = await self.client.generate(model=self.model, prompt=prompt)
+            time.sleep(10)
+            return response['response'].strip()
         except Exception as e:
             print(f"Error generating description for step {step}/{total_steps}: {e}")
             return f"Error: {e}"
